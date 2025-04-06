@@ -31,7 +31,7 @@ const contacts = [
 
 const AsideContacts = () => {
   return (
-    <div className="fixed top-1/3 right-5 p-[5px] md:p-4 bg-white/10 backdrop-blur-2xl shadow-lg border border-white/20 rounded-lg flex flex-col gap-4 text-white">
+    <div className="fixed top-1/3 right-5 p-[5px] md:p-4 bg-white/10 backdrop-blur-2xl shadow-lg border border-white/20 rounded-lg flex flex-col gap-4 text-white z-50">
       {contacts.map(({ icon: Icon, link, color }, index) => (
         <motion.a
           key={index}

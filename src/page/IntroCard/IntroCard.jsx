@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Code } from "lucide-react";
 import icon from "../../assets/InfoCardIcon/boy.png";
+import { Typewriter } from "react-simple-typewriter";
 
 const FloatingCircle = ({ size, xValues, yValues, duration, position }) => (
   <motion.div
@@ -10,6 +11,19 @@ const FloatingCircle = ({ size, xValues, yValues, duration, position }) => (
     className={`absolute w-${size} h-${size} bg-white/30 rounded-full ${position}`}
   />
 );
+
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.3,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const GlassCard = () => (
   <motion.div
@@ -25,17 +39,50 @@ const GlassCard = () => (
     >
       <img src={icon} alt="Person Icon" className="w-28 md:w-40 h-28 md:h-40" />
     </motion.div>
-    <div className="mt-2 md:ml-6 text-white  text-center md:text-left">
-      <h1 className="text-4xl font-extrabold tracking-wide font-serif">
+
+    <div className="mt-2 md:ml-6 text-white text-center md:text-left">
+      <motion.h1
+        className="text-4xl font-extrabold tracking-wide font-serif"
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        custom={1}
+      >
         Hi, I'm <span className="text-black">Moorthy</span>
-      </h1>
-      <p className="text-lg font-medium mt-2 flex justify-center md:justify-start items-center space-x-2 font-mono">
+      </motion.h1>
+
+      <motion.p
+        className="text-lg font-medium mt-2 flex justify-center md:justify-start items-center space-x-2 font-mono"
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        custom={2}
+      >
         <Code className="text-white" />
-        <span>Full Stack Developer</span>
-      </p>
-      <button className="mt-6 px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white/20 transition-all hover:scale-105 text-lg font-semibold font-sans">
+        <Typewriter
+          words={[
+            "Frontend Developer",
+            "Full Stack Developer",
+            "UI/UX Enthusiast",
+          ]}
+          loop={0}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+      </motion.p>
+
+      <motion.button
+        variants={textVariants}
+        initial="hidden"
+        animate="visible"
+        custom={3}
+        className="mt-6 px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white/20 transition-all hover:scale-105 text-lg font-semibold font-sans"
+      >
         See My Work
-      </button>
+      </motion.button>
     </div>
   </motion.div>
 );

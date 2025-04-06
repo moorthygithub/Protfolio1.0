@@ -1,91 +1,96 @@
-import { Home, User, LogOut } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/store";
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
-const Navbar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+const data = [
+  { month: "Jan", year2023: 74, year2024: 93.7 },
+  { month: "Feb", year2023: 72, year2024: 91.2 },
+  { month: "March", year2023: 69, year2024: 87.3 },
+  { month: "April", year2023: 67, year2024: 84.8 },
+  { month: "May", year2023: 65, year2024: 82.2 },
+  { month: "June", year2023: 80, year2024: 101.4 },
+  { month: "July", year2023: 85, year2024: 107.8 },
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/");
-  };
+  { month: "Aug", year2023: 84, year2024: 106.5 },
+  { month: "Sep", year2023: 82, year2024: 104.0 },
+  { month: "Oct", year2023: 79, year2024: 100.1 },
+  { month: "Nov", year2023: 76, year2024: 96.3 },
+  { month: "Dec", year2023: 75, year2024: 95.0 },
+];
+// Custom dot to highlight July, normal dots for others
+const CustomizedDot = (props) => {
+  const { cx, cy, payload } = props;
+
+  // Highlight July
+  if (payload.month === "July") {
+    return <circle cx={cx} cy={cy} r={7} stroke="red" strokeWidth={2} />;
+  }
+
+  // Normal dots for other months
   return (
-    <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md my-6">
-      <motion.div
-        className="bg-white/10 backdrop-blur-2xl shadow-[0_4px_30px_rgba(255,255,255,0.3)] rounded-full flex justify-around p-4 border border-white/20 text-white transition-all duration-300"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {/* Home Button */}
-        <Link
-          to="/home"
-          className="group flex flex-col items-center text-white"
+    <circle
+      cx={cx}
+      cy={cy}
+      r={5}
+      fill="#82ca9d"
+      stroke="#8884d8"
+      strokeWidth={1}
+    />
+  );
+};
+
+const Profile = () => {
+  return (
+    <div
+      style={{
+        width: "70%",
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "20px",
+        borderRadius: "10px",
+      }}
+    >
+      <h2 style={{ textAlign: "center", marginBottom: "10px", color: "#333" }}>
+        Yearly Weather Data
+      </h2>
+      <ResponsiveContainer width="100%" height={400}>
+        <LineChart
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.2, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            className="relative"
-          >
-            <Home size={30} className="drop-shadow-lg transition-transform" />
-            <motion.span
-              className="absolute inset-0 w-full h-full bg-purple-400 blur-md opacity-0 group-hover:opacity-40 transition-opacity"
-              animate={{ opacity: [0, 0.4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </motion.div>
-          <span className="text-sm font-semibold mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
-            Home
-          </span>
-        </Link>
-        {/* Profile Button */}
-        <Link
-          to="/profile"
-          className="group flex flex-col items-center text-white"
-        >
-          <motion.div
-            whileHover={{ scale: 1.2, rotate: -5 }}
-            whileTap={{ scale: 0.9 }}
-            className="relative"
-          >
-            <User size={30} className="drop-shadow-lg transition-transform" />
-            <motion.span
-              className="absolute inset-0 w-full h-full bg-blue-400 blur-md opacity-0 group-hover:opacity-40 transition-opacity"
-              animate={{ opacity: [0, 0.4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </motion.div>
-          <span className="text-sm font-semibold mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
-            Profile
-          </span>
-        </Link>
-        {/* Logout Button */}
-        <Link
-          onClick={handleLogout}
-          className="group flex flex-col items-center text-white"
-        >
-          <motion.div
-            whileHover={{ scale: 1.2, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            className="relative"
-          >
-            <LogOut size={30} className="drop-shadow-lg transition-transform" />
-            <motion.span
-              className="absolute inset-0 w-full h-full bg-red-400 blur-md opacity-0 group-hover:opacity-40 transition-opacity"
-              animate={{ opacity: [0, 0.4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </motion.div>
-          <span className="text-sm font-semibold mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
-            Logout
-          </span>
-        </Link>
-      </motion.div>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="year2023"
+            stroke="#8884d8"
+            strokeWidth={2}
+            name="2023"
+            dot={<CustomizedDot />}
+          />
+          <Line
+            type="monotone"
+            dataKey="year2024"
+            stroke="#82ca9d"
+            strokeWidth={2}
+            name="2024"
+            dot={<CustomizedDot />}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };
 
-export default Navbar;
+export default Profile;

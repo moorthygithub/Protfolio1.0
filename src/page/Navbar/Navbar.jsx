@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md my-6">
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[90%] max-w-md my-6 z-50">
       <motion.div
         className="bg-white/10 backdrop-blur-2xl shadow-[0_4px_30px_rgba(255,255,255,0.3)] rounded-full flex justify-around p-[5px] md:p-4 border border-white/20 text-white transition-all duration-300"
         initial={{ y: 50, opacity: 0 }}

@@ -1,12 +1,14 @@
 import AsideContacts from "../AsideContacts/AsideContacts";
 import IntroCard from "../IntroCard/IntroCard";
+import Navbar from "../Navbar/Navbar";
 
 const Home = () => {
   return (
-    <div className="relative">
+    <>
       <IntroCard />
-      <AsideContacts className=" hidden md:block" />
-    </div>
+      <AsideContacts className="hidden md:block" />
+      <Navbar />
+    </>
   );
 };
 
