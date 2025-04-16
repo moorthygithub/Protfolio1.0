@@ -1,63 +1,86 @@
 import { useEffect, useState } from "react";
+import { ChevronUp, CircleFadingArrowUp } from "lucide-react";
+import { useSelector } from "react-redux";
 
-const sections = ["home", "about", "projects", "contact"];
-
-const Sidebar = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [progressPercent, setProgressPercent] = useState(0);
+const ScrollToTopCircle = () => {
+  const [progress, setProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const darkMode = useSelector((state) => state.auth.darkMode);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-
-      // Scroll progress
       const scrollProgress = (scrollY / docHeight) * 100;
-      setProgressPercent(scrollProgress);
 
-      // Section detection
-      let current = 0;
-      sections.forEach((id, idx) => {
-        const el = document.getElementById(id);
-        if (el) {
-          const offset = el.offsetTop;
-          if (scrollY >= offset - window.innerHeight / 2) {
-            current = idx;
-          }
-        }
-      });
+      setIsVisible(scrollY > 100);
 
-      setActiveIndex(current);
+      setProgress(scrollProgress);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // run once on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <div className="fixed left-4 top-0 h-screen flex items-start z-50">
-      {/* Full Height Progress Bar */}
-      <div className="w-1 h-full bg-gray-300 rounded relative ">
-        <div
-          className="absolute left-0 top-0 w-1 bg-blue-500 rounded transition-all duration-500"
-          style={{ height: `${progressPercent}%` }}
-        ></div>
-      </div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-      {/* Current Section Label */}
-      <div className="mt-20 ml-3">
-        <a
-          href={`#${sections[activeIndex]}`}
-          className="text-sm font-bold text-blue-600 hover:underline transition-all"
+  const size = 60;
+  const strokeWidth = 6;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (progress / 100) * circumference;
+
+  return (
+    isVisible && (
+      <div className="fixed bottom-6 right-6 z-50">
+        <div
+          className="relative"
+          style={{ width: size, height: size }}
+          onClick={scrollToTop}
         >
-          {sections[activeIndex].charAt(0).toUpperCase() +
-            sections[activeIndex].slice(1)}
-        </a>
+          {/* Circular Progress */}
+          <svg width={size} height={size} className="rotate-[-90deg]">
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={darkMode ? "#4B5563" : "#e5e7eb"}
+              strokeWidth={strokeWidth}
+              fill="transparent"
+            />
+            <circle
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              stroke={darkMode ? "#3b82f6" : "#3b82f6"}
+              strokeWidth={strokeWidth}
+              fill="transparent"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+              className="transition-all duration-500 ease-out"
+            />
+          </svg>
+
+          {/* Arrow Icon (centered) */}
+          <div
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg transition-all ease-in-out ${
+              darkMode ? "bg-gray-800" : "bg-white"
+            }`}
+          >
+            <CircleFadingArrowUp
+              className={darkMode ? "text-white" : "text-black"}
+              size={24}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
-export default Sidebar;
+export default ScrollToTopCircle;

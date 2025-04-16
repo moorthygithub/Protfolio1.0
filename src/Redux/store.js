@@ -15,9 +15,27 @@ const persistConfig = {
   storage,
 };
 
+// const authSlice = createSlice({
+//   name: "auth",
+//   initialState: { isAuthenticated: false },
+//   reducers: {
+//     login: (state, action) => {
+//       const { username, password } = action.payload;
+//       if (username === "admin" && password === "123456") {
+//         state.isAuthenticated = true;
+//       }
+//     },
+//     logout: (state) => {
+//       state.isAuthenticated = false;
+//     },
+//   },
+// });
 const authSlice = createSlice({
   name: "auth",
-  initialState: { isAuthenticated: false },
+  initialState: {
+    isAuthenticated: false,
+    darkMode: true,
+  },
   reducers: {
     login: (state, action) => {
       const { username, password } = action.payload;
@@ -28,9 +46,13 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
     },
+    toggleTheme: (state) => {
+      state.darkMode = !state.darkMode;
+    },
   },
 });
-export const { login, logout } = authSlice.actions;
+
+export const { login, logout, toggleTheme } = authSlice.actions;
 
 const persistedReducer = persistReducer(persistConfig, authSlice.reducer);
 

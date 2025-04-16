@@ -1,16 +1,13 @@
 import Navbar from "../Navbar/Navbar";
 import ProfileHome from "../ProfileSection/ProfileHome";
-import Sidebar from "../SideBar/SideBar";
 
 const Profile = () => {
   return (
     <div className="relative">
-      {/* <Sidebar />
-      <Navbar /> */}
-
       <div className="space-y-20">
-        <ProfileHome />
-
+        <section id="home" >
+          <ProfileHome />
+        </section>
         <section id="about" className="h-screen bg-gray-200 p-10">
           About Section
         </section>

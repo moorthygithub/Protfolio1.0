@@ -1,16 +1,18 @@
-import AsideContacts from "../AsideContacts/AsideContacts";
-import IntroCard from "../IntroCard/IntroCard";
+import { useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import Sidebar from "../SideBar/SideBar";
+import ScrollToTopCircle from "../SideBar/Sidebar";
 
 const Layout = ({ children }) => {
+  const darkMode = useSelector((state) => state.auth.darkMode);
+
   return (
     <div className="relative">
-      {/* <InnerNavbar /> */}
-      <Sidebar />
-      <Navbar />
+      <div className={darkMode ? "bg-black text-white" : "bg-white text-black"}>
+        <ScrollToTopCircle />
+        <Navbar />
+      </div>
 
-      <main className="pl-6 space-y-20">{children}</main>
+      <main className="space-y-20">{children}</main>
     </div>
   );
 };
