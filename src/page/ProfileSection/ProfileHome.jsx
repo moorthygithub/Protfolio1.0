@@ -11,7 +11,7 @@ import {
 import heroImage from "../../assets/profileIcon/hero_image.jpeg";
 import resumeFile from "../../assets/Resume/Moorthy_Chandiran.pdf";
 import AnimatedImageBlock from "./AnimatedImageBlock";
-
+import darkModeImage from "../../assets/home/home-banner.jpg";
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -30,9 +30,12 @@ const ProfileHome = () => {
       ref={ref}
       className={`relative min-h-screen px-6 md:px-20 py-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 overflow-hidden ${
         darkMode
-          ? "bg-gradient-to-br from-[#1e293b] to-[#475569]"
+          ? "bg-cover bg-center bg-no-repeat"
           : "bg-gradient-to-br from-[#fdfcfb] via-[#e0c3fc] to-[#8ec5fc]"
       }`}
+      style={{
+        backgroundImage: darkMode ? `url(${darkModeImage})` : "",
+      }}
     >
       {/* Side Icons */}
       <div className="hidden md:flex flex-col gap-4 absolute left-4 top-1/2 -translate-y-1/2 z-50">
@@ -92,8 +95,8 @@ const ProfileHome = () => {
         </h1>
 
         <p
-          className={`text-xl font-semibold ${
-            darkMode ? "text-gray-300" : "text-gray-800"
+          className={`text-xl md:text-4xl font-semibold ${
+            darkMode ? "text-[#ff014f]" : "text-gray-800"
           }`}
         >
           <Typewriter
@@ -104,9 +107,9 @@ const ProfileHome = () => {
             ]}
             loop={0}
             cursor
-            cursorStyle="_"
+            cursorStyle="|"
             typeSpeed={70}
-            deleteSpeed={50}
+            deleteSpeed={15}
             delaySpeed={1000}
           />
         </p>
@@ -123,7 +126,7 @@ const ProfileHome = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
           <a
             href="mailto:moorthy.chandiran21@gmail.com"
-            className="bg-pink-600 text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
+            className="bg-[#ff014f] text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
           >
             Contact Me <IconArrowNarrowRight className="w-5 h-5" />
           </a>

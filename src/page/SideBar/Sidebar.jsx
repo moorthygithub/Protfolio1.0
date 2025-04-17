@@ -56,7 +56,7 @@ const ScrollToTopCircle = () => {
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={darkMode ? "#3b82f6" : "#3b82f6"}
+              stroke={darkMode ? "#ff014f" : "#ff014f"}
               strokeWidth={strokeWidth}
               fill="transparent"
               strokeDasharray={circumference}
