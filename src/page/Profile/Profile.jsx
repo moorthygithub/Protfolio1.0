@@ -2,6 +2,7 @@ import About from "../About/About";
 import AsideContacts from "../AsideContacts/AsideContacts";
 import Navbar from "../Navbar/Navbar";
 import ProfileHome from "../ProfileSection/ProfileHome";
+import SkillCarousel from "../Skill/SkillCarsoul";
 
 const Profile = () => {
   return (
@@ -13,6 +14,7 @@ const Profile = () => {
         <section id="about">
           <About />
         </section>
+        <SkillCarousel />
         <section id="projects" className="h-screen bg-gray-300 p-10">
           Projects Section
         </section>

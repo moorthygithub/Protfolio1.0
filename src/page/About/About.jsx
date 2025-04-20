@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useSelector } from "react-redux";
 import { GraduationCap, Briefcase } from "lucide-react";
-
+import darkModeImage from "../../assets/home/about-banner-1.png";
 const educationData = [
   {
     title: "Full Stack Python",
@@ -33,38 +33,38 @@ const educationData = [
 
 const About = () => {
   const darkMode = useSelector((state) => state.auth.darkMode);
-  const [ref, inView] = useInView({
-    triggerOnce: false, 
-    threshold: 0.2,
-  });
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    }),
+  };
 
   return (
     <div
-      ref={ref}
       className={`relative py-24 px-6 md:px-16 lg:px-32 transition-colors duration-300 ${
         darkMode ? "bg-black text-white" : "bg-white text-gray-900"
       } overflow-hidden`}
-      // style={
-      //   darkMode
-      //     ? {
-      //         backgroundImage: `url(${darkModeImage})`,
-      //         backgroundSize: "cover",
-      //         backgroundPosition: "center",
-      //       }
-      //     : {}
-      // }
+      style={{
+        backgroundImage: darkMode ? `url(${darkModeImage})` : "",
+      }}
     >
-      {darkMode && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-lg z-0" />
-      )}
+      {darkMode && <div className="absolute inset-0 bg-black/60  z-0" />}
 
-      {/* Header */}
       <motion.div
-        key={inView ? "in-view" : "out-of-view"}
-        className="relative z-10 text-center pb-20"
-        initial={{ opacity: 0, y: 40 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
+        custom={0}
       >
         <h1
           className={`text-5xl font-extrabold text-transparent bg-clip-text ${
@@ -85,81 +85,29 @@ const About = () => {
         </p>
       </motion.div>
 
-      {/* Timeline */}
-      <div className="relative z-10 flex flex-col space-y-16">
-        {educationData.map((item, idx) => (
-          <motion.div
-            key={idx}
-            className="relative group"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: idx * 0.8 }}
-          >
-            <div
-              className={`absolute left-1/2 -translate-x-1/2 h-full w-1 ${
-                darkMode
-                  ? "bg-gradient-to-b from-pink-400 to-purple-500"
-                  : "bg-gray-300"
-              }`}
-            />
-            <div
-              className={`relative max-w-4xl mx-auto p-6 rounded-2xl shadow-xl transition-all hover:scale-[1.01] duration-300 ${
-                darkMode
-                  ? "bg-white/10 backdrop-blur-lg border border-white/20"
-                  : "bg-gray-100 border border-gray-200"
-              }`}
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <div
-                  className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg ${
-                    darkMode
-                      ? "bg-gradient-to-tr from-purple-500 to-pink-500"
-                      : "bg-gradient-to-tr from-indigo-400 to-pink-400"
-                  }`}
-                >
-                  {item.icon}
-                </div>
-                <h3
-                  className={`text-xl font-semibold ${
-                    darkMode ? "text-pink-300" : "text-gray-800"
-                  }`}
-                >
-                  {item.title}
-                </h3>
-              </div>
-              <p
-                className={`text-sm ${
-                  darkMode ? "text-zinc-300" : "text-gray-700"
-                }`}
-              >
-                {item.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Current Role */}
       <motion.div
-        className={`relative z-10 mt-24 max-w-4xl mx-auto p-10 rounded-2xl shadow-2xl ${
+        className={`relative z-10 mt-24 max-w-4xl mx-auto p-10 rounded-2xl shadow-2xl mb-16 ${
           darkMode
             ? "border border-white/20 bg-white/5 backdrop-blur-xl"
             : "border border-gray-200 bg-gray-100"
         }`}
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
+        custom={educationData.length + 1}
       >
         <div className="flex items-center space-x-4 mb-4">
-          <div
+          <motion.div
             className={`w-14 h-14 flex items-center justify-center rounded-full shadow-lg ${
               darkMode
                 ? "bg-gradient-to-br from-indigo-500 to-pink-400"
                 : "bg-gradient-to-br from-indigo-400 to-pink-400"
             }`}
+            whileHover={{ scale: 1.1, rotate: -5 }}
           >
             <Briefcase size={28} />
-          </div>
+          </motion.div>
           <h3
             className={`text-2xl font-bold bg-clip-text text-transparent ${
               darkMode
@@ -180,13 +128,72 @@ const About = () => {
           modern interfaces with best-in-class React practices and architecture.
         </p>
       </motion.div>
+      {/* Timeline */}
+      <div className="relative z-10 flex flex-col space-y-16">
+        {educationData.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className="relative group"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={sectionVariants}
+            custom={idx + 1}
+            whileHover={{ scale: 1.015, rotate: 0.5 }}
+            transition={{ type: "spring", stiffness: 100 }}
+          >
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 h-full w-1 ${
+                darkMode
+                  ? "bg-gradient-to-b from-pink-400 to-purple-500"
+                  : "bg-gray-300"
+              }`}
+            />
 
-      {/* Footer Call-To-Action */}
-      <motion.div
+            <div
+              className={`relative max-w-4xl mx-auto p-6 rounded-2xl shadow-xl transition-all duration-300 ${
+                darkMode
+                  ? "bg-white/10 backdrop-blur-lg border border-white/20"
+                  : "bg-gray-100 border border-gray-200"
+              }`}
+            >
+              <div className="flex items-center space-x-4 mb-4">
+                <motion.div
+                  className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg ${
+                    darkMode
+                      ? "bg-gradient-to-tr from-purple-500 to-pink-500"
+                      : "bg-gradient-to-tr from-indigo-400 to-pink-400"
+                  }`}
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                >
+                  {item.icon}
+                </motion.div>
+                <h3
+                  className={`text-xl font-semibold ${
+                    darkMode ? "text-pink-300" : "text-gray-800"
+                  }`}
+                >
+                  {item.title}
+                </h3>
+              </div>
+              <p
+                className={`text-sm ${
+                  darkMode ? "text-zinc-300" : "text-gray-700"
+                }`}
+              >
+                {item.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* <motion.div
         className="relative z-10 text-center mt-24 py-10"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 1.5 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
         <p
           className={`text-xl font-semibold drop-shadow-md ${
@@ -195,16 +202,18 @@ const About = () => {
         >
           Let’s build something epic together.
         </p>
-        <button
-          className={`mt-6 px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 ${
+        <motion.button
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          className={`mt-6 px-6 py-3 rounded-full shadow-lg transition-transform duration-300 ${
             darkMode
               ? "text-white bg-gradient-to-r from-pink-500 to-purple-600"
               : "text-white bg-gradient-to-r from-indigo-500 to-pink-500"
           }`}
         >
           Contact Me
-        </button>
-      </motion.div>
+        </motion.button>
+      </motion.div> */}
     </div>
   );
 };

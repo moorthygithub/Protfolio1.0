@@ -37,6 +37,8 @@ const ProfileHome = () => {
         backgroundImage: darkMode ? `url(${darkModeImage})` : "",
       }}
     >
+      {darkMode && <div className="absolute inset-0 bg-black/50 z-0" />}
+
       {/* Side Icons */}
       <div className="hidden md:flex flex-col gap-4 absolute left-4 top-1/2 -translate-y-1/2 z-50">
         <a
