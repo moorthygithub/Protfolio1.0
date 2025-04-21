@@ -15,6 +15,8 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         specialGothic: ['"Special Gothic Expanded One"', "sans-serif"],
+        roboto: ['"Roboto"', "sans-serif"], // Add Roboto font
+        poppins: ['"Poppins"', "sans-serif"], // Add Poppins font
       },
       animation: {
         "spin-slow": "spin 20s linear infinite", // Custom spin animation

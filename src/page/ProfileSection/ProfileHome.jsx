@@ -29,12 +29,16 @@ const ProfileHome = () => {
     <div
       ref={ref}
       className={`relative min-h-screen px-6 md:px-20 py-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 overflow-hidden ${
-        darkMode
-          ? "bg-cover bg-center bg-no-repeat"
-          : "bg-gradient-to-br from-[#fdfcfb] via-[#e0c3fc] to-[#8ec5fc]"
+        darkMode ? "bg-cover bg-center bg-no-repeat" : ""
       }`}
       style={{
         backgroundImage: darkMode ? `url(${darkModeImage})` : "",
+        backgroundColor: darkMode
+          ? ""
+          : `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`,
+        background: !darkMode
+          ? `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`
+          : `url(${darkModeImage})`,
       }}
     >
       {darkMode && <div className="absolute inset-0 bg-black/50 z-0" />}

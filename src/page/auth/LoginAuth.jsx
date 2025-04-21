@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../Redux/store";
+import { login } from "../../Redux/Slice/authSlice";
 const LoginAuth = () => {
   const [LoginData, setLoginnData] = useState({
     username: "admin",

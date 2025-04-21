@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import {
@@ -10,54 +10,33 @@ import {
   REGISTER,
 } from "redux-persist/es/constants";
 
-const persistConfig = {
+// Reducers
+import authReducer from "./Slice/authSlice";
+import settingsReducer from "./Slice/settingsSlice";
+
+// Persist Configs
+const authPersistConfig = {
   key: "auth",
   storage,
 };
 
-// const authSlice = createSlice({
-//   name: "auth",
-//   initialState: { isAuthenticated: false },
-//   reducers: {
-//     login: (state, action) => {
-//       const { username, password } = action.payload;
-//       if (username === "admin" && password === "123456") {
-//         state.isAuthenticated = true;
-//       }
-//     },
-//     logout: (state) => {
-//       state.isAuthenticated = false;
-//     },
-//   },
-// });
-const authSlice = createSlice({
-  name: "auth",
-  initialState: {
-    isAuthenticated: false,
-    darkMode: true,
-  },
-  reducers: {
-    login: (state, action) => {
-      const { username, password } = action.payload;
-      if (username === "admin" && password === "123456") {
-        state.isAuthenticated = true;
-      }
-    },
-    logout: (state) => {
-      state.isAuthenticated = false;
-    },
-    toggleTheme: (state) => {
-      state.darkMode = !state.darkMode;
-    },
-  },
-});
+const settingsPersistConfig = {
+  key: "settings",
+  storage,
+};
 
-export const { login, logout, toggleTheme } = authSlice.actions;
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+const persistedSettingsReducer = persistReducer(
+  settingsPersistConfig,
+  settingsReducer
+);
 
-const persistedReducer = persistReducer(persistConfig, authSlice.reducer);
-
+// Store
 export const store = configureStore({
-  reducer: { auth: persistedReducer },
+  reducer: {
+    auth: persistedAuthReducer,
+    settings: persistedSettingsReducer,
+  },
   middleware: (defaultMiddleware) =>
     defaultMiddleware({
       serializableCheck: {

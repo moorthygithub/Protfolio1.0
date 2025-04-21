@@ -52,8 +52,17 @@ const About = () => {
       className={`relative py-24 px-6 md:px-16 lg:px-32 transition-colors duration-300 ${
         darkMode ? "bg-black text-white" : "bg-white text-gray-900"
       } overflow-hidden`}
+      // style={{
+      //   backgroundImage: darkMode ? `url(${darkModeImage})` : "",
+      // }}
       style={{
         backgroundImage: darkMode ? `url(${darkModeImage})` : "",
+        backgroundColor: darkMode
+          ? ""
+          : `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`,
+        background: !darkMode
+          ? `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`
+          : `url(${darkModeImage})`,
       }}
     >
       {darkMode && <div className="absolute inset-0 bg-black/60  z-0" />}

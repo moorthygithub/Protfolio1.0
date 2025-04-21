@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 import Home from "./page/Dashboard/Home";
 import LoginAuth from "./page/auth/LoginAuth";
-import Navbar from "./page/Navbar/Navbar";
 import Layout from "./page/Layout/Layout";
 import Profile from "./page/Profile/Profile";
 

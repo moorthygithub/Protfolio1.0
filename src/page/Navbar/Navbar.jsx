@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { Menu, Sun, Moon, X } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTheme } from "../../Redux/store";
+import { toggleTheme } from "../../Redux/Slice/authSlice";
 
 const navItems = ["Home", "About", "Projects", "Contact"];
 
