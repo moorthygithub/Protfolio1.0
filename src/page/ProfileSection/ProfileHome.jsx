@@ -12,6 +12,7 @@ import heroImage from "../../assets/profileIcon/hero_image.jpeg";
 import resumeFile from "../../assets/Resume/Moorthy_Chandiran.pdf";
 import AnimatedImageBlock from "./AnimatedImageBlock";
 import darkModeImage from "../../assets/home/home-banner.jpg";
+import { Link } from "react-scroll";
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -130,12 +131,21 @@ const ProfileHome = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
-          <a
+          {/* <a
             href="mailto:moorthy.chandiran21@gmail.com"
             className="bg-[#ff014f] text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
           >
             Contact Me <IconArrowNarrowRight className="w-5 h-5" />
-          </a>
+          </a> */}
+          <Link
+            to="contact"
+            smooth={true}
+            duration={800}
+            offset={-50}
+            className="cursor-pointer bg-[#ff014f] text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
+          >
+            Contact Me <IconArrowNarrowRight className="w-5 h-5" />
+          </Link>
           <a
             href={resumeFile}
             download

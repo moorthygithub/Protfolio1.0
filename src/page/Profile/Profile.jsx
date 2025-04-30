@@ -1,6 +1,4 @@
 import About from "../About/About";
-import AsideContacts from "../AsideContacts/AsideContacts";
-import Navbar from "../Navbar/Navbar";
 import ProfileHome from "../ProfileSection/ProfileHome";
 import SkillCarousel from "../Skill/SkillCarsoul";
 

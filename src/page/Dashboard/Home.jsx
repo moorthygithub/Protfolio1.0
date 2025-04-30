@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <IntroCard />
       <AsideContacts className="hidden md:block" />
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   );
 };

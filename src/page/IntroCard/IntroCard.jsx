@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Code } from "lucide-react";
 import icon from "../../assets/InfoCardIcon/boy.png";
 import { Typewriter } from "react-simple-typewriter";
+import { useNavigate } from "react-router-dom";
 
 const FloatingCircle = ({ size, xValues, yValues, duration, position }) => (
   <motion.div
@@ -25,67 +26,75 @@ const textVariants = {
   }),
 };
 
-const GlassCard = () => (
-  <motion.div
-    initial={{ y: 50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className="relative md:z-10 flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-lg p-[30px] md:p-10 rounded-3xl shadow-2xl max-w-lg md:max-w-2xl border border-white/30"
-  >
+const GlassCard = () => {
+  const navigate = useNavigate();
+  return (
     <motion.div
-      animate={{ rotate: [0, 10, -10, 0] }}
-      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-      className="p-5 bg-white/20 rounded-full"
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative md:z-10 flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-lg p-[30px] md:p-10 rounded-3xl shadow-2xl max-w-lg md:max-w-2xl border border-white/30"
     >
-      <img src={icon} alt="Person Icon" className="w-28 md:w-40 h-28 md:h-40" />
-    </motion.div>
-
-    <div className="mt-2 md:ml-6 text-white text-center md:text-left">
-      <motion.h1
-        className="text-4xl font-extrabold tracking-wide font-serif"
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        custom={1}
+      <motion.div
+        animate={{ rotate: [0, 10, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+        className="p-5 bg-white/20 rounded-full"
       >
-        Hi, I'm <span className="text-black">Moorthy</span>
-      </motion.h1>
-
-      <motion.p
-        className="text-lg font-medium mt-2 flex justify-center md:justify-start items-center space-x-2 font-mono"
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        custom={2}
-      >
-        <Code className="text-white" />
-        <Typewriter
-          words={[
-            "Frontend Developer",
-            "Full Stack Developer",
-            "UI/UX Enthusiast",
-          ]}
-          loop={0}
-          cursor
-          cursorStyle="_"
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
+        <img
+          src={icon}
+          alt="Person Icon"
+          className="w-28 md:w-40 h-28 md:h-40"
         />
-      </motion.p>
+      </motion.div>
 
-      <motion.button
-        variants={textVariants}
-        initial="hidden"
-        animate="visible"
-        custom={3}
-        className="mt-6 px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white/20 transition-all hover:scale-105 text-lg font-semibold font-sans"
-      >
-        See My Work
-      </motion.button>
-    </div>
-  </motion.div>
-);
+      <div className="mt-2 md:ml-6 text-white text-center md:text-left">
+        <motion.h1
+          className="text-4xl font-extrabold tracking-wide font-serif"
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          custom={1}
+        >
+          Hi, I'm <span className="text-black">Moorthy</span>
+        </motion.h1>
+
+        <motion.p
+          className="text-lg font-medium mt-2 flex justify-center md:justify-start items-center space-x-2 font-mono"
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          custom={2}
+        >
+          <Code className="text-white" />
+          <Typewriter
+            words={[
+              "Frontend Developer",
+              "Full Stack Developer",
+              "UI/UX Enthusiast",
+            ]}
+            loop={0}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </motion.p>
+
+        <motion.button
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          custom={3}
+          onClick={() => navigate("/profile")}
+          className="mt-6 px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white/20 transition-all hover:scale-105 text-lg font-semibold font-sans"
+        >
+          See My Work
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+};
 
 const IntroCard = () => {
   const circles = [

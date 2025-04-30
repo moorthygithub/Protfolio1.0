@@ -50,15 +50,6 @@ const SkillGrid = () => {
       className={`relative py-24 px-6 md:px-16 lg:px-32 transition-colors duration-300 overflow-hidden ${
         darkMode ? "bg-black text-white" : " text-gray-900"
       }`}
-      // style={
-      //   darkMode
-      //     ? {
-      //         backgroundImage: `url(${darkModeImage})`,
-      //         backgroundSize: "cover",
-      //         backgroundPosition: "center",
-      //       }
-      //     : {}
-      // }
       style={{
         backgroundImage: darkMode ? `url(${darkModeImage})` : "",
         backgroundColor: darkMode ? "" : "transparent",
@@ -98,7 +89,6 @@ const SkillGrid = () => {
               key={`${skill.name}-${index}`}
               className="flex flex-col items-center justify-center w-36 h-36 md:w-40 md:h-40 p-5 rounded-3xl backdrop-blur-xl shadow-md hover:shadow-2xl transition-all"
               style={{
-                fontFamily: "'Rajdhani', sans-serif",
                 backgroundColor: darkMode
                   ? "rgba(255,255,255,0.05)"
                   : "rgba(255,255,255,0.6)",

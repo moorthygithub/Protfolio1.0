@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       className="relative"
       style={{
         fontFamily: font,
-        "--primary-color": color, // CSS Variable defined here
+        "--primary-color": color, 
       }}
     >
       <div className={darkMode ? "bg-black text-white" : "bg-white text-black"}>
@@ -23,10 +23,9 @@ const Layout = ({ children }) => {
       </div>
 
       <main className="space-y-20">
-        {/* Example of using the dynamic color */}
         <div
           style={{
-            backgroundColor: "var(--primary-color)", // Apply CSS variable to a section
+            backgroundColor: "var(--primary-color)",
           }}
         >
           {children}

@@ -66,9 +66,8 @@ const ScrollToTopCircle = () => {
             />
           </svg>
 
-          {/* Arrow Icon (centered) */}
           <div
-            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg transition-all ease-in-out ${
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg transition-all ease-in-out cursor-pointer ${
               darkMode ? "bg-gray-800" : "bg-white"
             }`}
           >
