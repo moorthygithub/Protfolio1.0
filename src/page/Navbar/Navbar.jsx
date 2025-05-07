@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { Menu, Sun, Moon, X } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../../Redux/Slice/authSlice";
+import * as Dialog from "@radix-ui/react-dialog";
 
 const navItems = ["Home", "About", "Projects", "Contact"];
 
@@ -96,45 +97,61 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm md:hidden">
-          <div className={`w-64 bg-white dark:bg-black h-full p-6`}>
-            <div className="flex justify-between items-center mb-6">
-              <span className="text-lg font-bold text-purple-500">Menu</span>
-              <button onClick={() => setIsOpen(false)}>
-                <X className={darkMode ? "text-white" : "text-black"} />
-              </button>
-            </div>
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item}
-                  to={item.toLowerCase()}
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  onClick={() => setIsOpen(false)}
-                  className={`cursor-pointer text-base transition ${
-                    darkMode
-                      ? "text-white hover:text-purple-300"
-                      : "text-black hover:text-purple-700"
-                  }`}
+        <Dialog.Root open={isOpen} onOpenChange={setIsOpen} modal={false}>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-sm md:hidden" />
+            <Dialog.Content
+              className={`fixed left-0 top-0 z-[9999] w-64 h-full shadow-lg transition-transform duration-300 ease-in-out  overflow-x-auto p-6 md:hidden
+                ${darkMode ? "bg-black text-white" : "bg-white text-black"} 
+                `}
+              aria-describedby={undefined}
+            >
+              <div className="flex justify-between items-center mb-6">
+                <Dialog.Title asChild>
+                  <span className="text-lg font-bold text-purple-500">
+                    Menu
+                  </span>
+                </Dialog.Title>
+                <Dialog.Close asChild>
+                  <button>
+                    <X className={darkMode ? "text-white" : "text-black"} />
+                  </button>
+                </Dialog.Close>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item}
+                    to={item.toLowerCase()}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    onClick={() => setIsOpen(false)}
+                    className={`cursor-pointer text-base transition ${
+                      darkMode
+                        ? "text-white hover:text-purple-300"
+                        : "text-black hover:text-purple-700"
+                    }`}
+                  >
+                    {item}
+                  </Link>
+                ))}
+
+                <button
+                  onClick={() => {
+                    dispatch(toggleTheme());
+                    setIsOpen(false);
+                  }}
+                  className="mt-6 p-2 rounded bg-purple-600 text-white"
                 >
-                  {item}
-                </Link>
-              ))}
-              <button
-                onClick={() => {
-                  dispatch(toggleTheme());
-                  setIsOpen(false);
-                }}
-                className="mt-6 p-2 rounded bg-purple-600 text-white"
-              >
-                Toggle {darkMode ? "Light" : "Dark"} Mode
-              </button>
-            </div>
-          </div>
-        </div>
+                  Toggle {darkMode ? "Light" : "Dark"} Mode
+                </button>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
       )}
     </motion.nav>
   );

@@ -52,9 +52,6 @@ const About = () => {
       className={`relative py-24 px-6 md:px-16 lg:px-32 transition-colors duration-300 ${
         darkMode ? "bg-black text-white" : "bg-white text-gray-900"
       } overflow-hidden`}
-      // style={{
-      //   backgroundImage: darkMode ? `url(${darkModeImage})` : "",
-      // }}
       style={{
         backgroundImage: darkMode ? `url(${darkModeImage})` : "",
         backgroundColor: darkMode
@@ -75,27 +72,39 @@ const About = () => {
         variants={sectionVariants}
         custom={0}
       >
-        <h1
-          className={`text-5xl font-extrabold text-transparent bg-clip-text ${
-            darkMode
-              ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-500"
-              : "bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500"
-          } drop-shadow-lg`}
-        >
-          Journey of Growth & Learning
-        </h1>
-        <p
-          className={`text-lg mt-6 max-w-3xl mx-auto ${
-            darkMode ? "text-zinc-300" : "text-gray-600"
-          }`}
-        >
-          A timeline reflecting my academic achievements and current
-          professional role as a React Developer.
-        </p>
+        <div className="relative text-white py-10 text-center overflow-hidden">
+          <h1
+            className={`absolute inset-0 flex items-center justify-center text-[90px] sm:text-[120px] lg:text-[160px] font-extrabold uppercase z-0 select-none pointer-events-none ${
+              darkMode ? "text-white/5" : "text-black/5"
+            }`}
+          >
+            ABOUT
+          </h1>
+
+          <div className="relative z-10">
+            <h1
+              className={`text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text ${
+                darkMode
+                  ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-500"
+                  : "bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500"
+              } drop-shadow-lg`}
+            >
+              Journey of Growth & Learning
+            </h1>
+            <p
+              className={`text-lg mt-6 max-w-3xl mx-auto ${
+                darkMode ? "text-zinc-300" : "text-gray-600"
+              }`}
+            >
+              A timeline reflecting my academic achievements and current
+              professional role as a React Developer.
+            </p>
+          </div>
+        </div>
       </motion.div>
 
       <motion.div
-        className={`relative z-10 mt-24 max-w-4xl mx-auto p-10 rounded-2xl shadow-2xl mb-16 ${
+        className={`relative z-10  max-w-4xl mx-auto p-10 rounded-2xl shadow-2xl mb-16 ${
           darkMode
             ? "border border-white/20 bg-white/5 backdrop-blur-xl"
             : "border border-gray-200 bg-gray-100"
@@ -196,33 +205,6 @@ const About = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* <motion.div
-        className="relative z-10 text-center mt-24 py-10"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false, amount: 0.2 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <p
-          className={`text-xl font-semibold drop-shadow-md ${
-            darkMode ? "text-white" : "text-gray-800"
-          }`}
-        >
-          Let’s build something epic together.
-        </p>
-        <motion.button
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          className={`mt-6 px-6 py-3 rounded-full shadow-lg transition-transform duration-300 ${
-            darkMode
-              ? "text-white bg-gradient-to-r from-pink-500 to-purple-600"
-              : "text-white bg-gradient-to-r from-indigo-500 to-pink-500"
-          }`}
-        >
-          Contact Me
-        </motion.button>
-      </motion.div> */}
     </div>
   );
 };

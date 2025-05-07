@@ -1,5 +1,6 @@
 import About from "../About/About";
 import ProfileHome from "../ProfileSection/ProfileHome";
+import Project from "../Project/Project";
 import SkillCarousel from "../Skill/SkillCarsoul";
 
 const Profile = () => {
@@ -13,8 +14,8 @@ const Profile = () => {
           <About />
         </section>
         <SkillCarousel />
-        <section id="projects" className="h-screen bg-gray-300 p-10">
-          Projects Section
+        <section id="projects">
+          <Project />
         </section>
         <section id="contact" className="h-screen bg-gray-400 p-10">
           Contact Section

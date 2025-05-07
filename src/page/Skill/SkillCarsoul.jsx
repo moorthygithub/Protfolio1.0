@@ -20,6 +20,7 @@ import Redux from "../../assets/skills/redux.png";
 import ReactHook from "../../assets/skills/reactquery.webp";
 import Radix from "../../assets/skills/radix.png";
 import Github from "../../assets/skills/github.png";
+import SecondarySkills from "./SecondarySkills";
 
 const skills = [
   { image: reactImg, name: "React" },
@@ -61,23 +62,40 @@ const SkillGrid = () => {
       {darkMode && <div className="absolute inset-0 bg-black/60 z-0" />}
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-4xl md:text-5xl font-extrabold text-center mb-16"
-        >
-          <span
-            className={`text-transparent bg-clip-text drop-shadow-lg ${
-              darkMode
-                ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-500"
-                : "bg-gradient-to-r from-[#ff014f] via-[#fc6076] to-[#ffbe8e]"
+        <div className="relative text-white py-10 text-center overflow-hidden">
+          <h1
+            className={`absolute inset-0 flex items-center justify-center text-[100px] sm:text-[120px] lg:text-[160px] font-extrabold uppercase z-0 select-none pointer-events-none ${
+              darkMode ? "text-white/5" : "text-black/5"
             }`}
           >
-            My Tech Stack
-          </span>
-        </motion.h2>
+            {" "}
+            Skills
+          </h1>
 
+          <div className="relative z-10 space-y-4">
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-extrabold"
+            >
+              <span
+                className={`text-transparent bg-clip-text drop-shadow-lg ${
+                  darkMode
+                    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-red-500"
+                    : "bg-gradient-to-r from-[#ff014f] via-[#fc6076] to-[#ffbe8e]"
+                }`}
+              >
+                My Tech Stack
+              </span>
+            </motion.h2>
+
+            <h3 className="text-2xl font-semibold text-white/80">
+              <span className="text-pink-500">30+</span> Soft{" "}
+              <span className="text-white">Skill & HardSkill</span>
+            </h3>
+          </div>
+        </div>
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 place-items-center"
           initial={{ opacity: 0 }}
@@ -114,6 +132,8 @@ const SkillGrid = () => {
           ))}
         </motion.div>
       </div>
+      <SecondarySkills />
+      
     </div>
   );
 };

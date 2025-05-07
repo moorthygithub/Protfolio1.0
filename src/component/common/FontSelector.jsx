@@ -53,7 +53,7 @@ const FontColorDrawer = () => {
     <Dialog.Root modal={false}>
       <Dialog.Trigger asChild>
         <button
-          className={`fixed top-32 right-5 z-50 px-3 py-2 rounded-lg shadow-lg cursor-pointer 
+          className={`fixed top-32 right-5 z-50 px-3 py-2 rounded-lg shadow-lg cursor-pointer  
           ${darkMode ? "bg-[#ff014f] text-black" : "bg-black text-white"} `}
           style={{
             backgroundColor: "var(--primary-color)",
@@ -72,14 +72,15 @@ const FontColorDrawer = () => {
           aria-describedby={undefined}
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Customize UI</h2>
+            <Dialog.Title asChild>
+              <h2 className="text-xl font-semibold">Customize UI</h2>
+            </Dialog.Title>
             <Dialog.Close asChild>
               <button>
-                <X className="h-5 w-5" />
+                <X className={darkMode ? "text-white" : "text-black"} />
               </button>
             </Dialog.Close>
           </div>
-
           <div className="mb-8">
             <p className="font-semibold mb-2">Font Family</p>
             <div className="space-y-2">
