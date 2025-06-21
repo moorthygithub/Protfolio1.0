@@ -1,18 +1,3 @@
-// Description
-// :
-// "jhhjkhdhfhdshshfd"
-// Email
-// :
-// "df@gmail.com"
-// Firstname
-// :
-// "df"
-// Lastname
-// :
-// "df"
-// Phone
-// :
-// "46564365668"
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import axios from "axios";
 import { useFormik } from "formik";
@@ -126,22 +111,22 @@ export const Contact = () => {
             <ContactItem
               icon={<MailIcon size={20} />}
               label="Email"
-              value="example@example.com"
+              value="https://github.com/moorthygithub"
             />
             <ContactItem
               icon={<PhoneIcon size={20} />}
               label="Phone"
-              value="+91 9876543210"
+              value="+91 9360485526"
             />
             <ContactItem
               icon={<SendIcon size={20} />}
               label="Telegram"
-              value="@yourhandle"
+              value="https://t.me/moorthychandiran"
             />
             <ContactItem
               icon={<IconBrandLinkedin size={20} />}
               label="LinkedIn"
-              value="linkedin.com/in/you"
+              value="https://www.linkedin.com/in/moorthy-c-982333217/"
             />
             <ContactItem
               icon={<IconBrandGithub size={20} />}
@@ -249,15 +234,58 @@ const InputField = ({
   </div>
 );
 
+// const ContactItem = ({ icon, label, value }) => {
+//   const darkMode = useSelector((state) => state.auth.darkMode);
+
+//   return (
+//     <div className="flex items-start space-x-4">
+//       <div
+//         className={`p-2 rounded-full shadow-md ${
+//           darkMode ? "bg-black text-white" : "bg-white text-gray-900"
+//         }`}
+//       >
+//         {icon}
+//       </div>
+//       <div>
+//         <p className="text-sm font-medium text-gray-400 dark:text-gray-500">
+//           {label}
+//         </p>
+//         <p className="text-lg font-semibold">{value}</p>
+//       </div>
+//     </div>
+//   );
+// };
 const ContactItem = ({ icon, label, value }) => {
   const darkMode = useSelector((state) => state.auth.darkMode);
 
+  let href = "#";
+  switch (label.toLowerCase()) {
+    case "email":
+      href = `mailto:${value.replace(/^https?:\/\//, "")}`;
+      break;
+    case "phone":
+      href = `tel:${value}`;
+      break;
+    case "telegram":
+    case "linkedin":
+    case "github":
+      href = value.startsWith("http") ? value : `https://${value}`;
+      break;
+    default:
+      href = "#";
+  }
+
   return (
-    <div className="flex items-start space-x-4">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-start space-x-4 group"
+    >
       <div
-        className={`p-2 rounded-full shadow-md ${
+        className={`p-2 rounded-full shadow-md transition ${
           darkMode ? "bg-black text-white" : "bg-white text-gray-900"
-        }`}
+        } group-hover:scale-105`}
       >
         {icon}
       </div>
@@ -265,8 +293,10 @@ const ContactItem = ({ icon, label, value }) => {
         <p className="text-sm font-medium text-gray-400 dark:text-gray-500">
           {label}
         </p>
-        <p className="text-lg font-semibold">{value}</p>
+        <p className="text-lg font-semibold underline underline-offset-2 group-hover:text-primary transition">
+          {value}
+        </p>
       </div>
-    </div>
+    </a>
   );
 };
