@@ -131,12 +131,6 @@ const ProfileHome = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
-          {/* <a
-            href="mailto:moorthy.chandiran21@gmail.com"
-            className="bg-[#ff014f] text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
-          >
-            Contact Me <IconArrowNarrowRight className="w-5 h-5" />
-          </a> */}
           <Link
             to="contact"
             smooth={true}
