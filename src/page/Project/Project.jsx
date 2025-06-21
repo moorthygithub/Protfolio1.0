@@ -1,15 +1,15 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 
-import shopify from "../../assets/Project/logo-color.png";
-import taxi from "../../assets/Project/taxi-logo.png";
+import amazon from "../../assets/Project/amazon-logo.png";
 import form from "../../assets/Project/employee-logo.png";
 import firebase from "../../assets/Project/firebase-logo.png";
-import amazon from "../../assets/Project/amazon-logo.png";
-import weather from "../../assets/Project/weather-logo.png";
 import loan from "../../assets/Project/loan-calulator.png";
+import shopify from "../../assets/Project/logo-color.png";
+import taxi from "../../assets/Project/taxi-logo.png";
+import weather from "../../assets/Project/weather-logo.png";
 
 const projects = [
   {

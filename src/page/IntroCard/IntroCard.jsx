@@ -4,15 +4,7 @@ import icon from "../../assets/InfoCardIcon/boy.png";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
 
-const FloatingCircle = ({ size, xValues, yValues, duration, position }) => (
-  <motion.div
-    initial={{ x: xValues[0], y: yValues[0], opacity: 0.5 }}
-    animate={{ x: xValues, y: yValues, opacity: 1 }}
-    transition={{ repeat: Infinity, duration, ease: "easeInOut" }}
-    className={`absolute w-${size} h-${size} bg-white/30 rounded-full ${position}`}
-  />
-);
-
+// Animation variants for text
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 1) => ({
@@ -26,14 +18,36 @@ const textVariants = {
   }),
 };
 
+const sizeClassMap = {
+  44: "w-[44px] h-[44px]",
+  48: "w-[48px] h-[48px]",
+  52: "w-[52px] h-[52px]",
+  60: "w-[60px] h-[60px]",
+  64: "w-[64px] h-[64px]",
+  72: "w-[72px] h-[72px]",
+  80: "w-[80px] h-[80px]",
+};
+
+const FloatingCircle = ({ size, xValues, yValues, duration, position }) => (
+  <motion.div
+    initial={{ x: xValues[0], y: yValues[0], opacity: 0.5 }}
+    animate={{ x: xValues, y: yValues, opacity: 1 }}
+    transition={{ repeat: Infinity, duration, ease: "easeInOut" }}
+    className={`absolute z-0 ${sizeClassMap[size] || "w-[40px] h-[40px]"} 
+                bg-white/30 rounded-full ${position}`}
+  />
+);
+
 const GlassCard = () => {
   const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative md:z-10 flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-lg p-[30px] md:p-10 rounded-3xl shadow-2xl max-w-lg md:max-w-2xl border border-white/30"
+      className="relative z-10 flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-lg 
+                 p-[30px] md:p-10 rounded-3xl shadow-2xl max-w-lg md:max-w-2xl border border-white/30"
     >
       <motion.div
         animate={{ rotate: [0, 10, -10, 0] }}
@@ -42,12 +56,12 @@ const GlassCard = () => {
       >
         <img
           src={icon}
-          alt="Person Icon"
-          className="w-28 md:w-40 h-28 md:h-40"
+          alt="Profile Icon"
+          className="w-28 md:w-40 h-28 md:h-40 object-contain"
         />
       </motion.div>
 
-      <div className="mt-2 md:ml-6 text-white text-center md:text-left">
+      <div className="mt-4 md:ml-6 text-white text-center md:text-left">
         <motion.h1
           className="text-4xl font-extrabold tracking-wide font-serif"
           variants={textVariants}
@@ -59,7 +73,8 @@ const GlassCard = () => {
         </motion.h1>
 
         <motion.p
-          className="text-lg font-medium mt-2 flex justify-center md:justify-start items-center space-x-2 font-mono"
+          className="text-lg font-medium mt-2 flex justify-center md:justify-start 
+                     items-center space-x-2 font-mono"
           variants={textVariants}
           initial="hidden"
           animate="visible"
@@ -87,7 +102,9 @@ const GlassCard = () => {
           animate="visible"
           custom={3}
           onClick={() => navigate("/profile")}
-          className="mt-6 px-6 py-3 rounded-lg border border-white/40 text-white hover:bg-white/20 transition-all hover:scale-105 text-lg font-semibold font-sans"
+          className="mt-6 px-6 py-3 rounded-lg border border-white/40 
+                     text-white hover:bg-white/20 transition-all 
+                     hover:scale-105 text-lg font-semibold"
         >
           See My Work
         </motion.button>
@@ -157,7 +174,11 @@ const IntroCard = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden px-4 md:px-0">
+    <div
+      className="min-h-screen flex items-center justify-center 
+                    bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                    relative overflow-hidden px-4 md:px-0 z-0"
+    >
       {circles.map((circle, index) => (
         <FloatingCircle key={index} {...circle} />
       ))}

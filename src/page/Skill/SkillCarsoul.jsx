@@ -17,9 +17,11 @@ import pythonImg from "../../assets/skills/python.png";
 import fastapiImg from "../../assets/skills/fastapi.jpg";
 import sqlImg from "../../assets/skills/sql.png";
 import Redux from "../../assets/skills/redux.png";
-import ReactHook from "../../assets/skills/reactquery.webp";
+import ReactHook from "../../assets/skills/reactquery.png";
 import Radix from "../../assets/skills/radix.png";
 import Github from "../../assets/skills/github.png";
+import nodejs from "../../assets/skills/nodejs.png";
+import express from "../../assets/skills/express.png";
 import SecondarySkills from "./SecondarySkills";
 
 const skills = [
@@ -36,6 +38,8 @@ const skills = [
   { image: Radix, name: "Radix UI" },
   { image: Github, name: "GitHub" },
   { image: pythonImg, name: "Python" },
+  { image: nodejs, name: "Node Js" },
+  { image: express, name: "Express js" },
   { image: fastapiImg, name: "FastAPI" },
   { image: sqlImg, name: "SQL" },
 ];
@@ -133,7 +137,6 @@ const SkillGrid = () => {
         </motion.div>
       </div>
       <SecondarySkills />
-      
     </div>
   );
 };

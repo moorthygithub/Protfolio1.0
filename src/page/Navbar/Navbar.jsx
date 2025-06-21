@@ -46,7 +46,7 @@ const Navbar = () => {
             darkMode ? "text-white" : "text-black"
           }`}
         >
-          Moorthy
+          Moorthy 
         </div>
 
         <div className="hidden md:flex gap-8 items-center">
