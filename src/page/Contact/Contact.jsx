@@ -111,7 +111,7 @@ export const Contact = () => {
             <ContactItem
               icon={<MailIcon size={20} />}
               label="Email"
-              value="https://github.com/moorthygithub"
+              value="moorthy.chandiran21@gmail.com"
             />
             <ContactItem
               icon={<PhoneIcon size={20} />}
@@ -131,7 +131,7 @@ export const Contact = () => {
             <ContactItem
               icon={<IconBrandGithub size={20} />}
               label="GitHub"
-              value="github.com/yourusername"
+              value="https://github.com/moorthygithub"
             />
           </div>
 
