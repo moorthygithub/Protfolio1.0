@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import darkModeImage from "../../assets/home/about-banner-1.png";
 
 // Images
+import nextImg from "../../assets/skills/nextjs.png";
 import reactImg from "../../assets/skills/react.webp";
 import tsImg from "../../assets/skills/typescript.png";
 import jsImg from "../../assets/skills/javascript.webp";
@@ -22,16 +23,19 @@ import Radix from "../../assets/skills/radix.png";
 import Github from "../../assets/skills/github.png";
 import nodejs from "../../assets/skills/nodejs.png";
 import express from "../../assets/skills/express.png";
+import ant from "../../assets/skills/ant.svg";
 import SecondarySkills from "./SecondarySkills";
 
 const skills = [
   { image: reactImg, name: "React" },
+  { image: nextImg, name: "Next" },
   { image: jsImg, name: "JavaScript" },
   { image: tsImg, name: "TypeScript" },
   { image: cssImg, name: "CSS" },
   { image: htmlImg, name: "HTML" },
   { image: tailwindImg, name: "Tailwind CSS" },
   { image: materialUi, name: "Material UI" },
+  { image: ant, name: "Ant UI" },
   { image: materialUiTailwind, name: "Material Tailwind" },
   { image: ReactHook, name: "React Query" },
   { image: Redux, name: "Redux" },
