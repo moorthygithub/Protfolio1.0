@@ -8,7 +8,7 @@ import {
   Phone as PhoneIcon,
   Send as SendIcon,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
@@ -19,6 +19,19 @@ export const Contact = () => {
   const darkMode = useSelector((state) => state.auth.darkMode);
   const [ref, inView] = useInView({ threshold: 0.2 });
   const [loading, setLoading] = useState(false);
+const fetchProfileData = async () => {
+    try {
+      const response = await axios.get("https://node-test-cdke.onrender.com/api/profolio");
+    } catch (error) {
+      console.error("❌ Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+    const intervalId = setInterval(fetchProfileData, 600000);
+    return () => clearInterval(intervalId);
+  }, []);
   const formik = useFormik({
     initialValues: {
       Firstname: "",

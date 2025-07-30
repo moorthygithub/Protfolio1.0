@@ -39,3 +39,13 @@ body {
     background-position: 0% 50%;
   }
 } */
+.custom-modal.dark .ant-modal-content {
+  background-color: #000 !important;
+  color: white !important;
+}
+
+.custom-modal.light .ant-modal-content {
+  background-color: #fff !important;
+  color: black !important;
+}
+

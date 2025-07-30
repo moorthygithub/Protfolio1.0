@@ -1,18 +1,11 @@
 import { motion } from "framer-motion";
-import { Folder, Home, Mail, Moon, Sun, User } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-scroll";
 import { toggleTheme } from "../../Redux/Slice/authSlice";
-
+import BottomNav from "./BottomNav";
 const navItems = ["Home", "About", "Projects", "Contact"];
-
-const iconMap = {
-  Home: <Home size={20} />,
-  About: <User size={20} />,
-  Projects: <Folder size={20} />,
-  Contact: <Mail size={20} />,
-};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -97,66 +90,18 @@ const Navbar = () => {
       </motion.nav>
 
       <div
-        className={`fixed bottom-0 left-0 right-0 z-50 md:hidden h-16 border-t transition-colors ${
+        className={`fixed bottom-0 left-0 right-0 z-50 md:hidden h-16 m-4 rounded-full border-t transition-colors ${
           darkMode
             ? "bg-black text-white border-white/10"
             : "bg-white text-black border-black/10"
         }`}
       >
-        <div className="flex justify-around items-center h-full px-4">
-          {/* {navItems.map((item) => (
-            <Link
-              key={item}
-              to={item.toLowerCase()}
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              onSetActive={() => handleSetActive(item)}
-              className={`flex flex-col items-center justify-center gap-1 text-xs transition ${
-                darkMode
-                  ? "text-white hover:text-purple-300"
-                  : "text-black hover:text-purple-700"
-              }`}
-            >
-              {iconMap[item]}
-              <span className="text-[11px]">{item}</span>
-            </Link>
-          ))} */}
-          {navItems.map((item) => (
-            <Link
-              key={item}
-              to={item.toLowerCase()}
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              onSetActive={() => handleSetActive(item)}
-              className={`flex flex-col items-center justify-center gap-1 text-xs transition cursor-pointer ${
-                activeItem === item
-                  ? "text-purple-500 font-semibold"
-                  : darkMode
-                  ? "text-white hover:text-purple-300"
-                  : "text-black hover:text-purple-700"
-              }`}
-            >
-              {iconMap[item]}
-              <span className="text-[11px]">{item}</span>
-            </Link>
-          ))}
-
-          <button
-            onClick={() => dispatch(toggleTheme())}
-            className={`flex flex-col items-center justify-center gap-1 text-xs transition ${
-              darkMode
-                ? "text-white hover:text-purple-300"
-                : "text-black hover:text-purple-700"
-            }`}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            <span className="text-[11px]">{darkMode ? "Light" : "Dark"}</span>
-          </button>
-        </div>
+        <BottomNav
+          navItems={navItems}
+          setActiveItem={setActiveItem}
+          activeItem={activeItem}
+          handleSetActive={handleSetActive}
+        />
       </div>
     </>
   );
