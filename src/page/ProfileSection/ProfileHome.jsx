@@ -9,7 +9,6 @@ import {
   IconBrandLinkedin,
 } from "@tabler/icons-react";
 import heroImage from "../../assets/profileIcon/hero_image.jpeg";
-import resumeFile from "../../assets/Resume/Moorthy_Chandiran.pdf";
 import AnimatedImageBlock from "./AnimatedImageBlock";
 import darkModeImage from "../../assets/home/home-banner.jpg";
 import { Link } from "react-scroll";
@@ -70,7 +69,6 @@ const ProfileHome = () => {
         </a>
       </div>
 
-      {/* Text Content */}
       <motion.div
         className="z-10 w-full md:w-1/2 space-y-6 text-center md:text-left"
         initial="hidden"
@@ -141,7 +139,7 @@ const ProfileHome = () => {
             Contact Me <IconArrowNarrowRight className="w-5 h-5" />
           </Link>
           <a
-            href={resumeFile}
+            href="https://github.com/user-attachments/files/21530038/MOORTHY-CHANDIRAN.pdf"
             download
             className="border border-purple-600 text-purple-600 px-6 py-3 rounded-full flex items-center gap-2 hover:bg-purple-600 hover:text-white transition"
           >
