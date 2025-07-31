@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-scroll";
 import { toggleTheme } from "../../Redux/Slice/authSlice";
 import BottomNav from "./BottomNav";
+import { Tooltip } from "antd";
 const navItems = ["Home", "About", "Projects", "Contact"];
 
 const Navbar = () => {
@@ -75,16 +76,21 @@ const Navbar = () => {
               </div>
             ))}
 
-            <button
-              onClick={() => dispatch(toggleTheme())}
-              className="ml-4 p-2 rounded-full hover:bg-white/20 transition"
+            <Tooltip
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              placement="top"
             >
-              {darkMode ? (
-                <Sun size={20} className="text-white" />
-              ) : (
-                <Moon size={20} className="text-black" />
-              )}
-            </button>
+              <button
+                onClick={() => dispatch(toggleTheme())}
+                className="ml-4 p-2 rounded-full hover:bg-white/20 transition"
+              >
+                {darkMode ? (
+                  <Sun size={20} className="text-white" />
+                ) : (
+                  <Moon size={20} className="text-black" />
+                )}
+              </button>
+            </Tooltip>
           </div>
         </div>
       </motion.nav>

@@ -1,14 +1,13 @@
 import { Tooltip } from "antd";
-import { Folder, Home, Mail, Moon, Sun, User } from "lucide-react";
+import { Folder, Home, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-scroll";
-import { toggleTheme } from "../../Redux/Slice/authSlice";
+import ModeSwitch from "./ModeSwitch";
 
 const BottomNav = ({ navItems, activeItem, handleSetActive }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const darkMode = useSelector((state) => state.auth.darkMode);
-  const dispatch = useDispatch();
 
   const iconMap = {
     Home: <Home />,
@@ -72,46 +71,7 @@ const BottomNav = ({ navItems, activeItem, handleSetActive }) => {
           </Tooltip>
         );
       })}
-
-      <Tooltip title={darkMode ? "Light" : "Dark"} placement="top">
-        <button
-          onClick={() => dispatch(toggleTheme())}
-          onMouseEnter={() => setHoveredItem("theme")}
-          onMouseLeave={() => setHoveredItem(null)}
-          className={`relative group  flex flex-col items-center justify-center gap-1 text-xs transition p-2 rounded-full hover:animate-pulse-slow
-            ${
-              darkMode
-                ? "text-white hover:text-purple-300"
-                : "text-black hover:text-purple-700"
-            }
-            ${
-              hoveredItem === "theme"
-                ? darkMode
-                  ? "bg-white/10"
-                  : "bg-black/10"
-                : ""
-            }`}
-        >
-          <div
-            className={`absolute inset-0 rounded-full pointer-events-none transition-all duration-300 blur-md
-              ${
-                hoveredItem === "theme"
-                  ? "bg-yellow-300 opacity-20 scale-125"
-                  : "opacity-0"
-              }
-            `}
-          />
-
-          {/* Icon */}
-          <div
-            className={`transition-all duration-300 ease-in-out ${
-              hoveredItem === "theme" ? "rotate-[20deg] scale-110" : "scale-100"
-            }`}
-          >
-            {darkMode ? <Sun size={22} /> : <Moon size={22} />}
-          </div>
-        </button>
-      </Tooltip>
+      <ModeSwitch />
     </div>
   );
 };
