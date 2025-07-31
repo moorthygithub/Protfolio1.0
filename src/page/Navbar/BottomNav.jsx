@@ -24,6 +24,7 @@ const BottomNav = ({ navItems, activeItem, handleSetActive }) => {
 
         return (
           <Tooltip key={item} title={item} placement="top">
+ 
             <Link
               to={item.toLowerCase()}
               spy={true}

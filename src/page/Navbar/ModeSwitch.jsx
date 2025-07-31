@@ -10,7 +10,7 @@ const ModeSwitch = () => {
     {
       label: (
         <div
-          className={`flex items-center ${
+          className={`flex items-center mt-[2px] ${
             darkMode ? "text-white hover:text-white" : "text-black"
           }  justify-center h-6 `}
         >
@@ -21,7 +21,7 @@ const ModeSwitch = () => {
     },
     {
       label: (
-        <div className="flex items-center justify-center h-6 ">
+        <div className="flex items-center justify-center  mt-[2px] h-6 ">
           <Moon size={16} />
         </div>
       ),
