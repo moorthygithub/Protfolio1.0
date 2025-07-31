@@ -30,7 +30,6 @@ function App() {
   return (
     <>
       <Toaster position="top-right" />
-   
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
