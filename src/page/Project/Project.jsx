@@ -30,24 +30,24 @@ const projects = [
     description: "Real-time weather forecast using external APIs.",
     link: "https://main--fetchingweatherapi.netlify.app/",
   },
-  {
-    image: taxi,
-    title: "Taxi Booking",
-    description: "A taxi reservation UI with real-time fare calculation.",
-    link: "https://main--jazzy-daffodil-b48ffd.netlify.app/",
-  },
-  {
-    image: form,
-    title: "Employee Management",
-    description: "Manage employee data with auth & role-based access.",
-    link: "https://main--employeemanagementformreact.netlify.app/",
-  },
-  {
-    image: firebase,
-    title: "Firebase Auth",
-    description: "A secure login system using Firebase and React Context.",
-    link: "https://github.com/moorthygithub/FirebaseAuthentication",
-  },
+  // {
+  //   image: taxi,
+  //   title: "Taxi Booking",
+  //   description: "A taxi reservation UI with real-time fare calculation.",
+  //   link: "https://main--jazzy-daffodil-b48ffd.netlify.app/",
+  // },
+  // {
+  //   image: form,
+  //   title: "Employee Management",
+  //   description: "Manage employee data with auth & role-based access.",
+  //   link: "https://main--employeemanagementformreact.netlify.app/",
+  // },
+  // {
+  //   image: firebase,
+  //   title: "Firebase Auth",
+  //   description: "A secure login system using Firebase and React Context.",
+  //   link: "https://github.com/moorthygithub/FirebaseAuthentication",
+  // },
   {
     image: amazon,
     title: "Amazon Clone",

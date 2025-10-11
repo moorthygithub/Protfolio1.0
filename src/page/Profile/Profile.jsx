@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import About from "../About/About";
 import ProfileHome from "../ProfileSection/ProfileHome";

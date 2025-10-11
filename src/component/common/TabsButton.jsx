@@ -1,42 +1,70 @@
 import { useSelector } from "react-redux";
-import * as Tabs from "@radix-ui/react-tabs";
+import { Radio } from "antd";
 
 const TabsButton = ({ position, setPosition }) => {
   const darkMode = useSelector((state) => state.auth.darkMode);
 
+  const getStyles = (value) => {
+    const selected = position === value;
+    return {
+      backgroundColor: selected
+        ? "var(--primary-color)"
+        : darkMode
+        ? "#000"
+        : "#fff",
+      color: selected
+        ? darkMode
+          ? "#fff"
+          : "#000"
+        : darkMode
+        ? "#fff"
+        : "#000",
+      borderColor: selected
+        ? "var(--primary-color)"
+        : darkMode
+        ? "#525252"
+        : "#d1d5db",
+    };
+  };
+
   return (
-    <Tabs.Root
-      value={position}
-      onValueChange={setPosition}
-      className="w-full mt-6"
-    >
-      <Tabs.List className="grid grid-cols-2 gap-2 border-t pt-4">
-        {["top", "right", "bottom", "left"].map((pos) => {
-          const isSelected = position === pos;
-          return (
-            <Tabs.Trigger
-              key={pos}
-              value={pos}
-              className={`
-                px-4 py-2 rounded-lg border font-semibold transition-all duration-300 space-x-4
-                ${
-                  isSelected
-                    ? darkMode
-                      ? "bg-primary text-white border-primary"
-                      : "bg-primary text-black border-primary"
-                    : darkMode
-                    ? "bg-black text-white border-gray-600"
-                    : "bg-white text-black border-gray-300"
-                }
- 
-              `}
-            >
-              {pos.charAt(0).toUpperCase() + pos.slice(1)}
-            </Tabs.Trigger>
-          );
-        })}
-      </Tabs.List>
-    </Tabs.Root>
+    <div className="w-full mt-6 space-y-2">
+      {/* First Row: Top & Right */}
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+        className="flex"
+      >
+        {["top", "right"].map((value) => (
+          <Radio.Button
+            key={value}
+            value={value}
+            className="!w-full  !px-4  !font-semibold text-center transition-all duration-300"
+            style={getStyles(value)}
+          >
+            {value.charAt(0).toUpperCase() + value.slice(1)}
+          </Radio.Button>
+        ))}
+      </Radio.Group>
+
+      {/* Second Row: Bottom & Left */}
+      <Radio.Group
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+        className="flex"
+      >
+        {["bottom", "left"].map((value) => (
+          <Radio.Button
+            key={value}
+            value={value}
+            className="!w-full  !px-4 !font-semibold text-center transition-all duration-300"
+            style={getStyles(value)}
+          >
+            {value.charAt(0).toUpperCase() + value.slice(1)}
+          </Radio.Button>
+        ))}
+      </Radio.Group>
+    </div>
   );
 };
 

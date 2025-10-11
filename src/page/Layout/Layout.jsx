@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         "--primary-color": color, 
       }}
     >
-      <div className={darkMode ? "bg-black text-white" : "bg-white text-black"}>
+      <div className={darkMode ? "bg-black text-white" : "bg-white text-black"} >
         <ScrollToTopCircle />
         <FontSelector />
         <Navbar />

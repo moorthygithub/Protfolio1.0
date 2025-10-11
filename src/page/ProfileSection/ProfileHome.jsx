@@ -9,8 +9,6 @@ import { Link } from "react-scroll";
 import { Typewriter } from "react-simple-typewriter";
 import darkModeImage from "../../assets/home/home-banner.jpg";
 import heroImage from "../../assets/profileIcon/hero_image.jpeg";
-import resumeFile from "../../assets/Resume/Moorthy_Chandiran.pdf";
-import SocialLinks from "../../component/HomeSocialLinks/SocialLinks";
 import AnimatedImageBlock from "./AnimatedImageBlock";
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -42,7 +40,33 @@ const ProfileHome = () => {
       }}
     >
       {darkMode && <div className="absolute inset-0 bg-black/50 z-0" />}
-      <SocialLinks />
+
+      {/* Side Icons */}
+      <div className="hidden md:flex flex-col gap-4 absolute left-4 top-1/2 -translate-y-1/2 z-50">
+        <a
+          href="https://github.com/moorthygithub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconBrandGithub
+            className={`w-6 h-6 ${
+              darkMode ? "text-white" : "text-gray-800"
+            } hover:scale-125 transition`}
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/moorthy-c-982333217/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconBrandLinkedin
+            className={`w-6 h-6 ${
+              darkMode ? "text-blue-400" : "text-blue-700"
+            } hover:scale-125 transition`}
+          />
+        </a>
+      </div>
+
       <motion.div
         className="z-10 w-full md:w-1/2 space-y-6 text-center md:text-left"
         initial="hidden"
@@ -113,7 +137,7 @@ const ProfileHome = () => {
             Contact Me <IconArrowNarrowRight className="w-5 h-5" />
           </Link>
           <a
-            href={resumeFile}
+            href="https://github.com/user-attachments/files/22428952/MOORTHY-CHANDIRAN.pdf"
             download
             className="border border-purple-600 text-purple-600 px-6 py-3 rounded-full flex items-center gap-2 hover:bg-purple-600 hover:text-white transition"
           >

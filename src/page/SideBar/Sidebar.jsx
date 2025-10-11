@@ -1,5 +1,6 @@
+import { Tooltip } from "antd";
+import { CircleFadingArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
-import { ChevronUp, CircleFadingArrowUp } from "lucide-react";
 import { useSelector } from "react-redux";
 
 const ScrollToTopCircle = () => {
@@ -15,7 +16,6 @@ const ScrollToTopCircle = () => {
       const scrollProgress = (scrollY / docHeight) * 100;
 
       setIsVisible(scrollY > 100);
-
       setProgress(scrollProgress);
     };
 
@@ -26,6 +26,10 @@ const ScrollToTopCircle = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      setProgress(0);
+      setIsVisible(false);
+    }, 500);
   };
 
   const size = 60;
@@ -34,16 +38,32 @@ const ScrollToTopCircle = () => {
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
+  if (!isVisible) return null;
+
   return (
-    isVisible && (
-      <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-20 right-6 z-50">
+      <Tooltip title="Scroll to Top" placement="left">
         <div
-          className="relative"
-          style={{ width: size, height: size }}
+          className="relative cursor-pointer"
           onClick={scrollToTop}
+          style={{ width: size, height: size }}
         >
-          {/* Circular Progress */}
           <svg width={size} height={size} className="rotate-[-90deg]">
+            {/* Tailwind-like gradient */}
+            <defs>
+              <linearGradient
+                id="scrollGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#ec4899" /> {/* from-pink-500 */}
+                <stop offset="50%" stopColor="#8b5cf6" /> {/* via-purple-500 */}
+                <stop offset="100%" stopColor="#6366f1" /> {/* to-indigo-500 */}
+              </linearGradient>
+            </defs>
+
             <circle
               cx={size / 2}
               cy={size / 2}
@@ -56,7 +76,7 @@ const ScrollToTopCircle = () => {
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={darkMode ? "#ff014f" : "#ff014f"}
+              stroke="url(#scrollGradient)"
               strokeWidth={strokeWidth}
               fill="transparent"
               strokeDasharray={circumference}
@@ -67,19 +87,18 @@ const ScrollToTopCircle = () => {
           </svg>
 
           <div
-            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 shadow-lg transition-all ease-in-out cursor-pointer ${
-              darkMode ? "bg-gray-800" : "bg-white"
-            }`}
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+            rounded-full p-2 shadow-md flex items-center justify-center
+            ${darkMode ? "bg-[#1f1f1f]" : "bg-white"}`}
           >
             <CircleFadingArrowUp
-              className={darkMode ? "text-white" : "text-black"}
               size={24}
+              className={darkMode ? "text-white" : "text-black"}
             />
           </div>
         </div>
-      </div>
-    )
+      </Tooltip>
+    </div>
   );
 };
-
 export default ScrollToTopCircle;
