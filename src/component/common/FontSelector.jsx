@@ -105,11 +105,11 @@ const FontColorDrawer = () => {
             </div>
           </div>
 
-          <Dialog.Description className="text-sm mb-4">
+          {/* <Dialog.Description className="text-sm mb-4">
             Color Change apply only in Light Mode
-          </Dialog.Description>
+          </Dialog.Description> */}
 
-          <div>
+          {/* <div>
             <p className="font-semibold mb-2">Primary Color</p>
             <div className="flex gap-3 flex-wrap">
               {colors.map((color) => (
@@ -126,7 +126,7 @@ const FontColorDrawer = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
           <TabsButton position={position} setPosition={setPosition} />
         </Dialog.Content>
       </Dialog.Portal>

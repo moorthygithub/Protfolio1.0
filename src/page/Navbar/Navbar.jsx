@@ -76,7 +76,7 @@ const Navbar = () => {
               />
             </div>
           ))}
-
+{/* 
           <button
             onClick={() => dispatch(toggleTheme())}
             className="ml-4 p-2 rounded-full hover:bg-white/20 transition"
@@ -86,7 +86,7 @@ const Navbar = () => {
             ) : (
               <Moon size={20} className="text-black" />
             )}
-          </button>
+          </button> */}
         </div>
 
         <div className="md:hidden">
@@ -139,7 +139,7 @@ const Navbar = () => {
                   </Link>
                 ))}
 
-                <button
+                {/* <button
                   onClick={() => {
                     dispatch(toggleTheme());
                     setIsOpen(false);
@@ -147,7 +147,7 @@ const Navbar = () => {
                   className="mt-6 p-2 rounded bg-purple-600 text-white"
                 >
                   Toggle {darkMode ? "Light" : "Dark"} Mode
-                </button>
+                </button> */}
               </div>
             </Dialog.Content>
           </Dialog.Portal>

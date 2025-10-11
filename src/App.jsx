@@ -13,9 +13,9 @@ function App() {
     <AnimatePresence mode="wait">
       <Toaster position="top-right" />
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route
-          path="/profile"
+          path="/"
           element={
             <Layout>
               <Profile />
