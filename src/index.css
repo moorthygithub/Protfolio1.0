@@ -1,44 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-body {
-  background: linear-gradient(-45deg, #1a1a2e, #0f3460, #e94560, #16213e);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  overflow: hidden;
-  position: relative;
-}
 
-.glass-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
 .custom-modal.dark .ant-modal-content {
   background-color: #000 !important;
   color: white !important;
@@ -48,4 +11,3 @@ body {
   background-color: #fff !important;
   color: black !important;
 }
-

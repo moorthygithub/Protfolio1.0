@@ -41,11 +41,11 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div
-            className={`text-xl font-bold tracking-widest ${
+            className={`text-3xl font-bold tracking-widest ${
               darkMode ? "text-white" : "text-black"
             }`}
           >
-            Moorthy
+            PROTFOLIO
           </div>
 
           <div className="hidden md:flex gap-8 items-center">
@@ -57,7 +57,7 @@ const Navbar = () => {
                   smooth={true}
                   offset={-100}
                   duration={500}
-                  className={`cursor-pointer text-sm font-medium transition-all ${
+                  className={`cursor-pointer text-[16px] font-medium transition-all ${
                     darkMode
                       ? "text-white hover:text-purple-300"
                       : "text-black hover:text-purple-700"

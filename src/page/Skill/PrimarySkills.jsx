@@ -78,17 +78,6 @@ const PrimarySkills = () => {
       className={`relative py-24 px-6 md:px-16 lg:px-32 transition-colors duration-300 overflow-hidden`}
     >
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-[#ff014f] via-[#fc6076] to-[#ffbe8e] bg-clip-text text-transparent drop-shadow-lg">
-            My Tech Stack
-          </h2>
-          <p className="text-gray-400 text-lg">
-            A categorized look at the technologies I use to build robust, modern
-            applications.
-          </p>
-        </div>
-
         {/* Skill Categories */}
         <div className="space-y-16">
           {skillCategories.map((category, idx) => (
@@ -136,7 +125,7 @@ const PrimarySkills = () => {
                       alt={skill.name}
                       className="w-12 h-12 object-contain mb-2"
                     />
-                    <p className="text-xs font-medium text-center">
+                    <p className="text-sm font-medium text-center">
                       {skill.name}
                     </p>
                   </motion.div>

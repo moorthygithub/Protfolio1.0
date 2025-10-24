@@ -3,10 +3,10 @@ import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useSelector } from "react-redux";
-import { Link } from "react-scroll";
 import { Typewriter } from "react-simple-typewriter";
 import darkModeImage from "../../assets/home/home-banner.jpg";
 import heroImage from "../../assets/profileIcon/hero_image.jpeg";
+import Button from "../../component/Button/Button";
 import SocialLinks from "../../component/HomeSocialLinks/SocialLinks";
 import AnimatedImageBlock from "./AnimatedImageBlock";
 const fadeInUp = {
@@ -102,22 +102,24 @@ const ProfileHome = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
-          <Link
+          <Button
             to="contact"
-            smooth={true}
+            smooth
             duration={800}
             offset={-50}
-            className="cursor-pointer bg-[#ff014f] text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-pink-700 transition"
+            iconAfter={<ArrowRight className="w-5 h-5" />}
           >
-            Contact Me <ArrowRight className="w-5 h-5" />
-          </Link>
-          <a
+            Contact Me
+          </Button>
+          <Button
+            as="a"
             href="https://github.com/user-attachments/files/22428952/MOORTHY-CHANDIRAN.pdf"
             download
-            className="border border-purple-600 text-purple-600 px-6 py-3 rounded-full flex items-center gap-2 hover:bg-purple-600 hover:text-white transition"
+            iconAfter={<Download className="w-5 h-5" />}
+            variant="outlined"
           >
-            Download Resume <Download className="w-5 h-5" />
-          </a>
+            Download Resume
+          </Button>
         </div>
       </motion.div>
 

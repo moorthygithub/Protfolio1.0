@@ -13,12 +13,12 @@ const Layout = ({ children }) => {
       className="relative"
       style={{
         fontFamily: font,
-        "--primary-color": color, 
+        "--primary-color": color,
       }}
     >
-      <div className={darkMode ? "bg-black text-white" : "bg-white text-black"} >
-        <ScrollToTopCircle />
-        <FontSelector />
+      <div className={darkMode ? "bg-black text-white" : "bg-white text-black"}>
+        {/* <ScrollToTopCircle /> */}
+        {/* <FontSelector /> */}
         <Navbar />
       </div>
 

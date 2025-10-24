@@ -4,7 +4,7 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState: {
     darkMode: false,
-    fontFamily: '"Rajdhani", sans-serif',
+    fontFamily: '"Montserrat", sans-serif', // <-- corrected quotes
     primaryColor: "#1e40af",
   },
   reducers: {
