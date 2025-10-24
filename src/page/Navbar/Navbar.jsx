@@ -76,7 +76,7 @@ const Navbar = () => {
               </div>
             ))}
 
-            <Tooltip
+            {/* <Tooltip
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               placement="top"
             >
@@ -90,7 +90,7 @@ const Navbar = () => {
                   <Moon size={20} className="text-black" />
                 )}
               </button>
-            </Tooltip>
+            </Tooltip> */}
           </div>
         </div>
       </motion.nav>

@@ -1,29 +1,24 @@
 import { motion } from "framer-motion";
-import {
-  IconMail,
-  IconBrandGithub,
-  IconBrandGitlab,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
+import { Github, Gitlab, Linkedin, Mail } from "lucide-react";
 
 const contacts = [
   {
-    icon: IconMail,
+    icon: Mail,
     link: "mailto:your-moorthy.chandiran21@gmail.com",
     color: "bg-purple-400",
   },
   {
-    icon: IconBrandGithub,
+    icon: Github,
     link: "https://github.com/moorthygithub",
     color: "bg-gray-700",
   },
   {
-    icon: IconBrandGitlab,
+    icon: Gitlab,
     link: "https://gitlab.com/moorthy.chandiran21",
     color: "bg-orange-500",
   },
   {
-    icon: IconBrandLinkedin,
+    icon: Linkedin,
     link: "https://www.linkedin.com/in/moorthy-c-982333217/",
     color: "bg-blue-500",
   },

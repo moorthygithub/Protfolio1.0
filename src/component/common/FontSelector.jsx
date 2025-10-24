@@ -38,8 +38,6 @@ const FontColorDrawer = () => {
 
   return (
     <>
-      {/* Trigger Button */}
-      <Tooltip title="Customize UI">
         <button
           onClick={() => setOpen(true)}
           className={`fixed top-32 right-5 z-50 px-3 py-2 rounded-lg shadow-lg cursor-pointer  
@@ -50,7 +48,6 @@ const FontColorDrawer = () => {
         >
           Customize
         </button>
-      </Tooltip>
 
       {/* Ant Design Drawer */}
       <Drawer
@@ -101,7 +98,7 @@ const FontColorDrawer = () => {
             ))}
           </div>
         </div>
-
+{/* 
      
         <p className="text-sm mb-4">Color Change apply only in Light Mode</p>
 
@@ -123,11 +120,11 @@ const FontColorDrawer = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <TabsButton position={position} setPosition={setPosition} />
-        </div>
+        </div> */}
       </Drawer>
     </>
   );

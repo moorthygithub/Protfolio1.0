@@ -1,9 +1,8 @@
 import { Tooltip } from "antd";
 import { Folder, Home, Mail, User } from "lucide-react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-scroll";
-import ModeSwitch from "./ModeSwitch";
 
 const BottomNav = ({ navItems, activeItem, handleSetActive }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -72,7 +71,6 @@ const BottomNav = ({ navItems, activeItem, handleSetActive }) => {
           </Tooltip>
         );
       })}
-      <ModeSwitch />
     </div>
   );
 };

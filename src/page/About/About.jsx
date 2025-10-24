@@ -53,16 +53,16 @@ const About = () => {
         darkMode ? "bg-black text-white" : "bg-white text-gray-900"
       } overflow-hidden`}
       style={{
-        backgroundImage: darkMode ? `url(${darkModeImage})` : "",
-        backgroundColor: darkMode
-          ? ""
+        backgroundImage: darkMode
+          ? `url(${darkModeImage})`
           : `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`,
-        background: !darkMode
-          ? `linear-gradient(135deg, var(--primary-color) 0%, #fdfcfb 50%, #8ec5fc 100%)`
-          : `url(${darkModeImage})`,
+        backgroundSize: darkMode ? "cover" : "auto",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundAttachment: darkMode ? "fixed" : "scroll", 
       }}
     >
-      {darkMode && <div className="absolute inset-0 bg-black/60  z-0" />}
+      {darkMode && <div className="absolute inset-0 bg-black/75  z-0" />}
 
       <motion.div
         className="relative z-10 text-center"

@@ -1,28 +1,23 @@
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandGitlab,
-  IconMail,
-} from "@tabler/icons-react";
+import { Github, Linkedin, Gitlab, Mail } from "lucide-react";
 
 const socialLinks = [
   {
-    icon: IconBrandGithub,
+    icon: Github,
     link: "https://github.com/moorthygithub",
     color: { light: "text-gray-800", dark: "text-white" },
   },
   {
-    icon: IconBrandLinkedin,
+    icon: Linkedin,
     link: "https://www.linkedin.com/in/moorthy-c-982333217/",
     color: { light: "text-blue-700", dark: "text-blue-400" },
   },
   {
-    icon: IconBrandGitlab,
+    icon: Gitlab,
     link: "https://gitlab.com/moorthy.chandiran21",
     color: { light: "text-orange-600", dark: "text-orange-400" },
   },
   {
-    icon: IconMail,
+    icon: Mail,
     link: "mailto:moorthy.chandiran21@gmail.com",
     color: { light: "text-red-600", dark: "text-red-400" },
   },

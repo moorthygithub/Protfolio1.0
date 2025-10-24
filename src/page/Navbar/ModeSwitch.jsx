@@ -2,7 +2,7 @@ import { Segmented, Tooltip } from "antd";
 import { Moon, Sun } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../Redux/Slice/authSlice";
-
+// ---------------------Not Used this for dark light mode -----------------
 const ModeSwitch = () => {
   const darkMode = useSelector((state) => state.auth.darkMode);
   const dispatch = useDispatch();

@@ -1,4 +1,5 @@
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import { Github, Linkedin } from "lucide-react";
+
 import axios from "axios";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
@@ -19,9 +20,11 @@ export const Contact = () => {
   const darkMode = useSelector((state) => state.auth.darkMode);
   const [ref, inView] = useInView({ threshold: 0.2 });
   const [loading, setLoading] = useState(false);
-const fetchProfileData = async () => {
+  const fetchProfileData = async () => {
     try {
-      const response = await axios.get("https://node-test-cdke.onrender.com/api/profolio");
+      const response = await axios.get(
+        "https://node-test-cdke.onrender.com/api/profolio"
+      );
     } catch (error) {
       console.error("❌ Error fetching data:", error);
     }
@@ -137,12 +140,12 @@ const fetchProfileData = async () => {
               value="https://t.me/moorthychandiran"
             />
             <ContactItem
-              icon={<IconBrandLinkedin size={20} />}
+              icon={<Linkedin size={20} />}
               label="LinkedIn"
               value="https://www.linkedin.com/in/moorthy-c-982333217/"
             />
             <ContactItem
-              icon={<IconBrandGithub size={20} />}
+              icon={<Github size={20} />}
               label="GitHub"
               value="https://github.com/moorthygithub"
             />
