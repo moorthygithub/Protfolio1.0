@@ -98,7 +98,7 @@ const PrimarySkills = () => {
               </h3>
 
               <motion.div
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 p-6"
+                className="grid grid-cols-2 sm:grid-cols-3  xl:grid-cols-5 gap-8 md:p-6"
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
                 variants={{
