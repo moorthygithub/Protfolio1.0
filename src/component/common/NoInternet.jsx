@@ -1,4 +1,3 @@
-
 const NoInternet = () => {
   return (
     <div className="fixed inset-0 bg-black text-white flex items-center justify-center z-50">
