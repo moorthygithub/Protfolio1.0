@@ -108,7 +108,7 @@ moorthygithub-protfolio1.0/
 
 Ensure you have the following installed:
 - **Node.js** (v16 or higher)
-- **npm** or **yarn**
+- **pnpm** or **yarn**
 
 ### Installation
 
@@ -120,7 +120,7 @@ git clone https://github.com/moorthygithub/protfolio1.0.git
 cd moorthygithub-protfolio1.0
 
 # Install dependencies
-npm install
+pnpm install
 # or
 yarn install
 ```
@@ -129,7 +129,7 @@ yarn install
 
 ```bash
 # Start development server
-npm run dev
+pnpm  dev
 # or
 yarn dev
 
@@ -140,12 +140,12 @@ yarn dev
 
 ```bash
 # Create optimized production build
-npm run build
+pnpm  build
 # or
 yarn build
 
 # Preview production build locally
-npm run preview
+pnpm preview
 # or
 yarn preview
 ```
@@ -285,7 +285,7 @@ VITE_ANALYTICS_ID=your_analytics_id
 ### Netlify
 ```bash
 # Build command
-npm run build
+pnpm  build
 
 # Publish directory
 dist
