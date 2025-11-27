@@ -45,7 +45,7 @@ const Navbar = () => {
               darkMode ? "text-white" : "text-black"
             }`}
           >
-            PROTFOLIO
+            PORTFOLIO
           </div>
 
           <div className="hidden md:flex gap-8 items-center">
